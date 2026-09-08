@@ -10,6 +10,11 @@ plugin.define({ id = "mnul.net_radio", name = "Net Radio", version = "1.3", api_
 -- is opened, so station changes do not require restarting the player or
 -- reloading the plugin.
 --
+-- The content of the file follows the same structure as Hiby's own Radio.txt
+-- this allows users to keep using their existing station list if they have one.
+-- Otherwise an online service like https://radiotxt.site/ can be used to generate 
+-- a Radio.txt file.
+--
 -- The filename is matched case-insensitively (Radio.txt, radio.txt, ...)
 -- for the common casings, so files copied from other systems still load.
 --
@@ -20,8 +25,6 @@ plugin.define({ id = "mnul.net_radio", name = "Net Radio", version = "1.3", api_
 
 -- Case-insensitive Radio.txt resolver. The plugin sandbox exposes no
 -- directory-listing API for the SD root, so we probe the realistic casings.
--- On the R1's FAT32/exFAT card this is redundant (the FS is case-insensitive),
--- but it keeps the plugin working on a case-sensitive host simulator too.
 
 local function find_radio_file()
     local root = plugin.sd_root()
